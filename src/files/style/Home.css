@@ -1,0 +1,118 @@
+.home-form {
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.text-field {
+    width: 100%;
+}
+
+.button-cont {
+    width: 100%;
+    margin: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.img-header {
+    width: 100%;
+}
+
+.text-field-grid {
+    margin: 10px;
+}
+
+.vg-item {
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* height: 200px; */
+    cursor: pointer;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.vg-item:hover {
+    border: 5px solid rgba(0, 0, 0, 0.707);
+}
+
+.vg-item-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    filter: grayscale(1) contrast(100) brightness(1);
+}
+
+.vg-dialog-close-icon {
+    margin: -45px 0px 0px -50px !important;
+    position: fixed !important;
+    background-color: white !important;
+}
+
+.candidate-grid {
+    border-radius: 20px;
+    border: 5px solid rgba(0, 0, 0, 0.732);
+    background-color: rgb(191, 191, 191);
+    font-weight: bold;
+}
+
+.candidate-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    margin-bottom: -4px;
+}
+
+.candidate-vg-header {
+    text-align: center;
+    border-bottom: 2px solid black;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    line-height: 15px;
+}
+
+.candidate-grid:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+    background-color: rgba(1, 117, 1, 0.5);
+    border: 5px solid green;
+}
+
+
+.help-icon:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.info-header-left {
+    text-align: left;
+    background-color: rgb(0, 118, 197);
+    border-radius: 10px 0px 0px 10px;
+}
+
+.info-header-center {
+    text-align: center;
+    background-color: rgb(131, 41, 35);
+}
+
+.info-header-right {
+    text-align: right;
+    background-color: rgb(197, 158, 0);
+
+    border-radius: 0px 10px 10px 0px;
+}
+
+.info-header {
+    cursor: pointer;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.info-header:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.info-text {
+    background-color: rgba(128, 128, 128, 0.308);
+    padding: 10px;
+    border-radius: 10px;
+}
