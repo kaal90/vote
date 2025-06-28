@@ -9,6 +9,9 @@ import React from 'react';
 import IconButton from '@mui/material/IconButton';
 import CancelIcon from '@mui/icons-material/Cancel';
 import HelpIcon from '@mui/icons-material/Help';
+import InputAdornment from '@mui/material/InputAdornment';
+import LocalSeeIcon from '@mui/icons-material/LocalSee';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const Home = () => {
 
@@ -17,6 +20,7 @@ const Home = () => {
     const [openVG, setOpenVG] = React.useState(false);
     const [openInfo, setOpenInfo] = React.useState(false);
     const [vGIdx, setVGIdx] = React.useState(0);
+    const [nic, setNIC] = React.useState("");
     const [voteGroups, setVoteGroup] = React.useState([
         {
             name_en: "National Peoples Power",
@@ -58,6 +62,29 @@ const Home = () => {
             }]
         }
     ]);
+    const [voterName, setVoterName] = React.useState(["Please Enter a valid NIC to Continue"])
+    const [voter, setVoter] = React.useState(
+        [
+            {
+                nic: "941890806V",
+                name: "Mahawithanalage Don Nadun Vimarshana"
+            },
+            {
+                nic: "2",
+                name: "Vimarshana"
+            },
+            {
+                nic: "3",
+                name: "Mahawithana"
+            },
+            {
+                nic: "3",
+                name: "John"
+            }
+        ]
+    );
+
+    const [userData, setUserData] = React.useState({})
 
     const [infoText, setInfoText] = React.useState(
         {
@@ -90,18 +117,36 @@ const Home = () => {
 
     const [info, setInfo] = React.useState(infoText.sinhala);
 
-    // const handleSubmit = () => {
-    //     let name = false;
-    //     let nic = false;
-    //     let c1 = false;
-    //     let c2 = false;
+    const handleMatchName = (e) => {
+        let voterName = [];
 
-    //     if () {
+        for (let index = 0; index < voter.length; index++) {
+            const element = voter[index];
 
-    //     }
+            if (element.nic === e.target.value) {
+                voterName.push(element.name)
+            }
+        }
 
-    //     setOpen(false);
-    // }
+        if (voterName.length > 0) {
+            setVoterName(voterName)
+        } else {
+            setVoterName(["Please Enter a valid NIC to Continue"])
+        }
+
+        setNIC(e.target.value);
+    }
+
+    const handleSaveUserData = () => {
+        if (nic != "" && (voterName[0] != "" && voterName[0] != "Please Enter a valid NIC to Continue")) {
+            let userData = {
+                name: voterName,
+                nic: nic
+            }
+            setUserData(userData)
+            setOpen(false)
+        }
+    }
 
     const handleOpenVG = (idx) => {
         setVGIdx(idx);
@@ -169,23 +214,34 @@ const Home = () => {
                 open={open}
             >
                 <DialogContent>
-                    <Grid size={6} className="home-form" contianer spacing={1}>
+                    <Grid size={6} className="home-form" container spacing={1}>
                         <img className="img-header" src="/header.jpg" alt="header" />
                         {/* <form onSubmit={handleSubmit()}> */}
                         <Grid size={12} className="text-field-grid">
-                            <TextField className="text-field" id="fname" label="Full Name" variant="outlined" />
+                            <TextField
+                                className="text-field"
+                                id="nic"
+                                label="NIC Number"
+                                variant="outlined"
+                                onChange={handleMatchName}
+                            />
                         </Grid>
+                        {voterName.length === 1 ?
+                            <Grid size={12} className="text-field-grid custom-text-field-grid">
+                                {voterName[0]}
+                            </Grid>
+                            :
+                            <Grid size={12} className="text-field-grid">
+                                <Autocomplete
+                                    disablePortal
+                                    options={voterName}
+                                    className="text-field"
+                                    renderInput={(params) => <TextField {...params} label="Name" />}
+                                />
+                            </Grid>
+                        }
                         <Grid size={12} className="text-field-grid">
-                            <TextField className="text-field" id="nic" label="NIC Number" variant="outlined" />
-                        </Grid>
-                        <Grid size={12} className="text-field-grid">
-                            <TextField className="text-field" id="code1" label="Code 1" variant="outlined" />
-                        </Grid>
-                        <Grid size={12} className="text-field-grid">
-                            <TextField className="text-field" id="code2" label="Code 2" variant="outlined" />
-                        </Grid>
-                        <Grid size={12} className="text-field-grid">
-                            <Button className="button-cont" id="continue" variant="contained" size="large" onClick={handleSubmit}>Continue</Button>
+                            <Button className="button-cont" id="continue" variant="contained" size="large" onClick={handleSaveUserData}>Continue</Button>
                         </Grid>
                         {/* </form> */}
                     </Grid>

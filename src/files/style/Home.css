@@ -116,3 +116,9 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+.custom-text-field-grid {
+    border: 1px solid lightgrey;
+    padding: 16px 14px 16.8px 14px;
+    border-radius: 5px;
+}
